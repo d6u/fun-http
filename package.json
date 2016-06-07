@@ -1,0 +1,35 @@
+{
+  "name": "fun-http",
+  "version": "0.0.0",
+  "description": "Functional HTTP server for FUN!",
+  "keywords": [
+    "middleware",
+    "framework",
+    "application",
+    "http",
+    "app",
+    "web"
+  ],
+  "author": "Daiwei Lu <daiweilu123@gmail.com> (http://daiwei.lu/)",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "devDependencies": {
+    "onchange": "2.5.0",
+    "tslint": "3.10.2",
+    "typescript": "1.8.10",
+    "typings": "1.0.4"
+  },
+  "dependencies": {
+    "co": "4.6.0",
+    "lodash": "4.13.1"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch:build": "npm run build -- -w",
+    "postversion": "git push && git push --tags"
+  }
+}

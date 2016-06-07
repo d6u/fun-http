@@ -1,0 +1,21 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es6",
+    "noImplicitAny": true,
+    "outDir": "./",
+    "sourceMap": true,
+    "declaration": true,
+    "listFiles": true,
+    "pretty": true
+  },
+  "files": [
+    "typings-custom/co.d.ts",
+    "typings-custom/lodash.d.ts",
+    "typings/index.d.ts",
+    "index.ts"
+  ]
+}
