@@ -12,6 +12,14 @@
   ],
   "author": "Daiwei Lu <daiweilu123@gmail.com> (http://daiwei.lu/)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d6u/fun-http.git"
+  },
+  "bugs": {
+    "url": "https://github.com/d6u/fun-http/issues"
+  },
+  "homepage": "https://github.com/d6u/fun-http#readme",
   "main": "index.js",
   "files": [
     "lib",
