@@ -1,6 +1,5 @@
-import {createServer, createResponse} from './lib';
+import FunHttp from './lib/FunHttp';
 
 module.exports = {
-  createServer,
-  createResponse,
+  FunHttp,
 };

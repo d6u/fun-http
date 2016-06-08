@@ -32,12 +32,13 @@
     "typings": "1.0.4"
   },
   "dependencies": {
-    "co": "4.6.0",
     "lodash": "4.13.1"
   },
   "scripts": {
+    "clean": "rm -v lib/*.{d.ts,js,js.map} index.{d.ts,js,js.map}",
     "build": "tsc",
     "watch:build": "npm run build -- -w",
+    "preversion": "npm run clean -s; npm run build",
     "postversion": "git push && git push --tags"
   }
 }

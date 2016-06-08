@@ -1,33 +1,12 @@
 import {ServerResponse} from 'http';
 import isString = require('lodash/isString');
 
-export interface FunHttpResponseConfig {
-  headers?: {[key: string]: string};
-  status?: number;
-  json?: any;
-  text?: string;
-}
-
-export class FunHttpResponse {
-  constructor(config: FunHttpResponseConfig) {
-    this.headers = config.headers;
-    this.status = config.status;
-    this.json = config.json;
-    this.text = config.text;
-  }
-
-  public headers: {[key: string]: string} = null;
-  public status: number = null;
-  public json: any = null;
-  public text: string = null;
-}
-
-export function handleResponse(res: ServerResponse, response: any) {
+function handleResponseValue(res: ServerResponse, response: any): void {
   if (response != null) {
     if (isString(response)) {
       res.statusCode = 200;
       res.end(response);
-    } else if (response instanceof FunHttpResponse) {
+    } else if (response.status || response.headers || response.json || response.text) {
       const {headers, status, json, text} = response;
 
       res.statusCode = status || 200;
@@ -43,7 +22,7 @@ export function handleResponse(res: ServerResponse, response: any) {
       } else if (text != null) {
         res.end(text);
       } else {
-        throw new Error('response must contain a json or text field');
+        res.end();
       }
     } else {
       res.statusCode = 200;
@@ -53,8 +32,25 @@ export function handleResponse(res: ServerResponse, response: any) {
   }
 }
 
-export function handleErrorResponse(res: ServerResponse, err: Error) {
-  console.error(err);
-  res.statusCode = 500;
-  res.end();
+function handleResponse(res: ServerResponse, error: Error): void;
+function handleResponse(res: ServerResponse, value: any): void;
+function handleResponse(res: ServerResponse, value: Error | any): void {
+  if (value instanceof Error) {
+    res.statusCode = 500;
+    res.end();
+    return;
+  }
+
+  if (value && typeof value.then === 'function') {
+    (value as Promise<any>)
+      .then((response) => handleResponseValue(res, response))
+      .catch((err) => {
+        res.statusCode = 500;
+        res.end();
+      });
+  } else {
+    handleResponseValue(res, value);
+  }
 }
+
+export {handleResponse as default};
