@@ -22,8 +22,12 @@
   "homepage": "https://github.com/d6u/fun-http#readme",
   "main": "index.js",
   "files": [
+    "typings-custom",
     "lib",
-    "index.js"
+    "index.d.ts",
+    "index.js",
+    "index.js.map",
+    "index.ts"
   ],
   "devDependencies": {
     "onchange": "2.5.0",
