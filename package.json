@@ -1,6 +1,6 @@
 {
   "name": "fun-http",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Functional HTTP server for FUN!",
   "keywords": [
     "middleware",
