@@ -59,7 +59,7 @@ Paire with [co](https://www.npmjs.com/package/co), you can make everything clean
 ```js
 const co = require('co');
 
-app.use(co(function *(req, next) {
+app.use(co.wrap(function *(req, next) {
   const name = yield next();
   return {hello: name};
 }));
