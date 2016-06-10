@@ -4,6 +4,7 @@ import {
   IncomingMessage,
   ServerResponse
 } from 'http';
+import {ListenOptions} from 'net';
 import {RouteHandler, NoHandlerError} from './interfaces';
 import handleResponse from './handleResponse';
 import {toPromise} from './Utils';
@@ -21,17 +22,18 @@ export default class FunHttp {
     this.handlers.push(handler);
   }
 
-  listen(port: number): void;
-  listen(port: number, hostname: string): void;
-  listen(port: number, backlog: number): void;
-  listen(port: number, callback: () => void): void;
-  listen(port: number, hostname: string, backlog: number): void;
-  listen(port: number, hostname: string, callback: () => void): void;
-  listen(port: number, backlog: number, callback: () => void): void;
-  listen(port: number, hostname: string, backlog: number, callback: () => void): void;
-  listen(...args: (number | string | (() => void))[]): void {
+  listen(port: number, listeningListener?: Function): void;
+  listen(path: string, listeningListener?: Function): void;
+  listen(handle: any, listeningListener?: Function): void;
+  listen(options: ListenOptions, listeningListener?: Function): void;
+  listen(port: number, hostname?: string, listeningListener?: Function): void;
+  listen(port: number, backlog?: number, listeningListener?: Function): void;
+  listen(path: string, backlog?: number, listeningListener?: Function): void;
+  listen(handle: any, backlog?: number, listeningListener?: Function): void;
+  listen(port: number, hostname?: string, backlog?: number, listeningListener?: Function): void;
+  listen(): void {
     this.server = createServer((req, res) => this.handler(req, res));
-    this.server.listen.apply(this.server, args);
+    this.server.listen.apply(this.server, arguments);
   }
 
   private _handler(req: IncomingMessage, res: ServerResponse) {
