@@ -39,7 +39,7 @@ If returned value (or promise resolved value) is not a number or string, it will
 
 ## Customize Response
 
-**fun-http** looks special structure when on request handler returned values to customize response's status and headers.
+**fun-http** will look for special structure on values returned from request handler to customize response's status and headers.
 
 ```js
 app.use(function () {
