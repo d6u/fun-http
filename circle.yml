@@ -1,0 +1,6 @@
+machine:
+  node:
+    version: 4.4.5
+test:
+  pre:
+    - npm run build
