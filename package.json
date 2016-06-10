@@ -26,6 +26,9 @@
   ],
   "devDependencies": {
     "onchange": "2.5.0",
+    "supertest": "1.2.0",
+    "tap-spec": "4.1.1",
+    "tape": "4.5.1",
     "tslint": "3.10.2",
     "typescript": "1.8.10",
     "typings": "1.0.4"
@@ -37,6 +40,8 @@
     "clean": "rm -rv lib",
     "build": "tsc",
     "watch:build": "npm run build -- -w",
+    "test": "node test | tap-spec",
+    "watch:test": "npm test -s; onchange 'lib/*.js' 'test/*.js' -- npm test -s",
     "preversion": "npm run clean -s; npm run build",
     "postversion": "git push && git push --tags"
   }
