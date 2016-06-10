@@ -35,7 +35,65 @@ app.use(function (req) {
 });
 ```
 
-If returned value (or promise resolved value) is not a number of string, it will be parsed into JSON string using `JSON.stringify`.
+If returned value (or promise resolved value) is not a number or string, it will be parsed into JSON string using `JSON.stringify`.
+
+## Customize Response
+
+**fun-http** looks special structure when on request handler returned values to customize response's status and headers.
+
+```js
+app.use(function () {
+  return {
+    status: 404,
+    json: {
+      reason: 'not found'
+    }
+  };
+});
+```
+
+```
+$ curl -i localhost:3000
+
+HTTP/1.1 404 Not Found
+Date: Fri, 10 Jun 2016 00:14:34 GMT
+Connection: keep-alive
+Content-Length: 22
+
+{"reason":"not found"}
+```
+
+For custom headers:
+
+```js
+app.use(function (req) {
+  return {
+    headers: {
+      'x-really-awesome': 'yes!'
+    }
+  };
+});
+```
+
+```
+$ curl -i localhost:3000
+
+HTTP/1.1 200 OK
+x-really-awesome: yes!
+Date: Fri, 10 Jun 2016 00:14:02 GMT
+Connection: keep-alive
+Content-Length: 0
+```
+
+You can also force **fun-http** to return text:
+
+```js
+app.use(function (req) {
+  return {
+    text: 'I just want to tell you...'
+  };
+});
+```
 
 ## Middleware
 
@@ -68,6 +126,21 @@ app.use(function () {
   return 'World';
 });
 ```
+
+Or you can even use it with async/await functions:
+
+```js
+app.use(async function (req, next) {
+  const name = await next();
+  return {hello: name};
+});
+
+app.use(function () {
+  return 'World';
+});
+```
+
+_Of cause, Node.js doesn't currently support async/await functions, you will need to use transpiler like Babel to transpile the source._
 
 ## Examples
 
