@@ -12,7 +12,10 @@ function handleResponseValue(res: ServerResponse, obj: any): void {
     res.statusCode = 200;
     res.end(obj);
   } else if (obj.status || obj.headers || obj.json || obj.text) {
-    const {headers, status, json, text} = obj;
+    const headers = obj.headers;
+    const status = obj.status;
+    const json = obj.json;
+    const text = obj.text;
 
     res.statusCode = status || 200;
 
