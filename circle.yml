@@ -3,4 +3,5 @@ machine:
     version: 4.4.5
 test:
   pre:
+    - typings install
     - npm run build
