@@ -1,6 +1,7 @@
 # :monkey_face: Fun(ctional) Http
 
 [![npm version](https://badge.fury.io/js/fun-http.svg)](https://badge.fury.io/js/fun-http)
+[![CircleCI](https://circleci.com/gh/d6u/fun-http/tree/master.svg?style=svg)](https://circleci.com/gh/d6u/fun-http/tree/master)
 
 HTTP server should be as stateless as possible like functions. We should write request handlers in pure funtion. Let's treat return value as responses and use [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to wrap async operations.
 
