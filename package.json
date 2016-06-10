@@ -20,14 +20,9 @@
     "url": "https://github.com/d6u/fun-http/issues"
   },
   "homepage": "https://github.com/d6u/fun-http#readme",
-  "main": "index.js",
+  "main": "lib/index.js",
   "files": [
-    "typings-custom",
-    "lib",
-    "index.d.ts",
-    "index.js",
-    "index.js.map",
-    "index.ts"
+    "lib"
   ],
   "devDependencies": {
     "onchange": "2.5.0",
@@ -39,7 +34,7 @@
     "lodash": "4.13.1"
   },
   "scripts": {
-    "clean": "rm -v lib/*.{d.ts,js,js.map} index.{d.ts,js,js.map}",
+    "clean": "rm -rv lib",
     "build": "tsc",
     "watch:build": "npm run build -- -w",
     "preversion": "npm run clean -s; npm run build",

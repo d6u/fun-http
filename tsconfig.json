@@ -6,7 +6,7 @@
     "module": "commonjs",
     "target": "es6",
     "noImplicitAny": true,
-    "outDir": "./",
+    "outDir": "./lib",
     "sourceMap": true,
     "declaration": true,
     "listFiles": true,
@@ -16,6 +16,6 @@
     "typings-custom/co.d.ts",
     "typings-custom/lodash.d.ts",
     "typings/index.d.ts",
-    "index.ts"
+    "src/index.ts"
   ]
 }
