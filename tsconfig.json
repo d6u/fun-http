@@ -14,8 +14,10 @@
   },
   "files": [
     "typings-custom/co.d.ts",
+    "typings-custom/commander.d.ts",
     "typings-custom/lodash.d.ts",
     "typings/index.d.ts",
-    "src/index.ts"
+    "src/index.ts",
+    "src/bin/fun-http.ts"
   ]
 }

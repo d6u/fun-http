@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/d6u/fun-http#readme",
   "main": "lib/index.js",
+  "bin": {
+    "fun-http": "./lib/bin/fun-http.js"
+  },
   "files": [
     "lib"
   ],
@@ -34,6 +37,12 @@
     "typings": "1.0.4"
   },
   "dependencies": {
+    "babel-plugin-syntax-async-functions": "6.8.0",
+    "babel-plugin-transform-async-to-module-method": "6.8.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.8.0",
+    "babel-register": "6.9.0",
+    "bluebird": "3.4.0",
+    "commander": "2.9.0",
     "lodash": "4.13.1"
   },
   "scripts": {
