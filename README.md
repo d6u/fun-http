@@ -28,7 +28,7 @@ HTTP server should be as stateless as possible like functions. We should write r
     }
     ```
 
-3. Fire the server, and tada~ :tanabata_tree:
+3. Fire the server, and tada~ :tada:
 
     ```sh
     $ fun-http server.js
