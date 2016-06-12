@@ -3,11 +3,46 @@
 [![npm version](https://badge.fury.io/js/fun-http.svg)](https://badge.fury.io/js/fun-http)
 [![CircleCI](https://circleci.com/gh/d6u/fun-http/tree/master.svg?style=svg)](https://circleci.com/gh/d6u/fun-http/tree/master)
 
+_Possibly the easiest way to start a HTTP server in Node.js._
+
 HTTP server should be as stateless as possible like functions. We should write request handlers in pure funtion. Let's treat return value as responses and use [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to wrap async operations.
 
 ## Usage
 
 **fun-http** supports Node >= 4.
+
+### As a CLI
+
+1. Install as global package
+
+    ```sh
+    $ npm install -g fun-http
+    ```
+
+2. Define the server, only need to export a function.
+
+    ```js
+    // server.js
+    export default async function (req) {
+      return 'Hello, World!';
+    }
+    ```
+
+3. Fire the server, and tada~ :tada:
+
+    ```sh
+    $ fun-http server.js
+    $ curl -i localhost:3000
+
+    HTTP/1.1 200 OK
+    Date: Sun, 12 Jun 2016 22:12:41 GMT
+    Connection: keep-alive
+    Content-Length: 13
+
+    Hello, World!
+    ```
+
+### As a module
 
 ```sh
 npm install --save fun-http
