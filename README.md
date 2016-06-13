@@ -49,7 +49,7 @@ npm install --save fun-http
 ```
 
 ```js
-const FunHttp = require('../').FunHttp;
+const FunHttp = require('fun-http').FunHttp;
 const app = new FunHttp();
 
 app.use(function (req) {
