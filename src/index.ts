@@ -1,5 +1,5 @@
 import FunHttp from './FunHttp';
 
-module.exports = {
+export {
   FunHttp,
 };
